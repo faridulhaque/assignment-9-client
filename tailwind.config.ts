@@ -18,6 +18,17 @@ const config: Config = {
           neutral: "#3d4451",
           "base-100": "#ffffff",
         },
+        // screens: {
+        //   xs: "0",
+        //   sm: "220px",
+
+        //   md: "768px",
+        //   // => @media (min-width: 1024px) { ... }
+
+        //   // => @media (min-width: 1280px) { ... }
+        //   lg: "1280px",
+        //   xl: "1400px",
+        // },
       },
       "dark",
       "cupcake",

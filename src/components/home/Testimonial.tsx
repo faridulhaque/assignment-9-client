@@ -28,7 +28,7 @@ const Testimonial = () => {
               <TestimonialCard key={index} item={item}></TestimonialCard>
             )
         )}
-        <div className="text-black absolute bottom-5 w-1/5 flex items-center justify-between">
+        <div className="text-black absolute bottom-5 xl:w-1/5 lg:w-1/5 md:w-2/5 w-4/5 flex items-center justify-between ">
           <button
             onClick={prev}
             className="py-5 px-5 rounded-full shadow-lg cursor-pointer text-md"

@@ -36,6 +36,9 @@ const Navbar = () => {
             <li>
               <a>Items </a>
             </li>
+            <li>
+              <a>Testimonial </a>
+            </li>
           </ul>
         </div>
         <a className="ml-5 text-xl cursor-pointer">Findify</a>
@@ -52,6 +55,9 @@ const Navbar = () => {
 
           <li>
             <a>Items </a>
+          </li>
+          <li>
+            <a>Testimonial </a>
           </li>
         </ul>
       </div>
