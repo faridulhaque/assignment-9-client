@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <div
-      className="hero top-0 h-[50vh]"
+      className="hero h-[calc(100vh-70px)]"
       style={{
         backgroundImage: "url(https://i.ibb.co/X3cwqz3/banner.jpg)",
       }}
