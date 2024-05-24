@@ -1,4 +1,5 @@
 import React from "react";
+import HeroButtons from "./HeroButtons";
 
 const Header = () => {
   return (
@@ -19,7 +20,7 @@ const Header = () => {
             Community! Join Us Today to Help and Be Helped – Together, We Make
             Finding Lost Belongings a Breeze!
           </p>
-          <button className="btn btn-primary text-white">Get Started</button>
+          <HeroButtons></HeroButtons>
         </div>
       </div>
     </div>
