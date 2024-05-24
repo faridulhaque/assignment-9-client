@@ -32,3 +32,4 @@ export const testimonials: TTestimonials[] = [
     img: "https://res.cloudinary.com/dr2vztyib/image/upload/v1680510921/home-provider/03-1-112x0-c-center_rla1bp.jpg",
   },
 ];
+

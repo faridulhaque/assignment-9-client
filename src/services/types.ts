@@ -8,3 +8,10 @@ export type TTestimonials = {
 export type TTestimonialCardPage = {
   item: TTestimonials;
 };
+
+export type TInputTypes = {
+  label: string;
+  name: string;
+  placeholder: string;
+  type: string;
+};
