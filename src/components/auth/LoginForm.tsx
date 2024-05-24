@@ -1,15 +1,36 @@
 "use client";
+import { useLoginMutation } from "@/services/otherApi/authApi";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
+  const router = useRouter();
+  const [login, { isLoading: loggingIn }] = useLoginMutation();
+
   const [viewPassword, setViewPassword] = React.useState(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("hello");
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
+    const result: any = await login({
+      email,
+      password,
+    });
+console.log(result)
+
+    if (result?.data?.success) {
+      localStorage.setItem("id", result?.data?.data?.id);
+      localStorage.setItem("token", result?.data?.data?.token);
+      toast.success("You have logged in successfully");
+      router.push("/");
+    } else {
+      toast.error(result?.error?.data?.message);
+    }
+
+   
   };
 
   return (
@@ -59,7 +80,7 @@ const LoginForm = () => {
       <div className="w-11/12 mb-3 mx-auto">
         <small className="text-sm text-gray-600">
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="text-primary hover:underline">
+          <Link href="/auth/register" className="text-primary hover:underline">
             Create One
           </Link>
         </small>
@@ -67,6 +88,7 @@ const LoginForm = () => {
 
       <button
         type="submit"
+        disabled={loggingIn}
         className="w-11/12 mt-2 block mx-auto bg-primary text-white font-bold py-2 px-4 rounded"
       >
         Login

@@ -1,5 +1,7 @@
 import { TTestimonials } from "./types";
 
+export const baseUrl = "http://localhost:5000/api"
+
 export const testimonials: TTestimonials[] = [
   {
     name: "Michael Bell",

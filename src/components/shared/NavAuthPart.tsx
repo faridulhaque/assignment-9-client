@@ -6,7 +6,7 @@ import { FiLogOut } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 
 const NavAuthPart = () => {
-  const user = true;
+  const user = false;
   const handleLogout = () => {
     localStorage.removeItem("user");
   };
