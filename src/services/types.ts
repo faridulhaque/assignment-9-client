@@ -15,3 +15,8 @@ export type TInputTypes = {
   placeholder: string;
   type: string;
 };
+export type CategoryModalType = {
+  setNewCategory: (name: string) => void;
+  handleAddCategory: () => void;
+  addingCat: boolean
+};

@@ -19,7 +19,6 @@ const LoginForm = () => {
       email,
       password,
     });
-console.log(result)
 
     if (result?.data?.success) {
       localStorage.setItem("id", result?.data?.data?.id);
