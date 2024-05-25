@@ -8,11 +8,11 @@ export const apiSlice = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = localStorage.getItem("token");
       if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
+        headers.set("Authorization", `${token}`);
       }
       return headers;
     },
   }),
-  tagTypes: ['cats'],
+  tagTypes: ['cats', 'profile'],
   endpoints: (build) => ({}),
 });

@@ -4,7 +4,7 @@ const categoriesApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllCats: builder.query({
       query: () => {
-        const url = `/category`;
+        const url = `/category/all`;
         const method = "GET";
 
         return {

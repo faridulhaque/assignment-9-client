@@ -1,14 +1,24 @@
 "use client";
+import { useContextElement } from "@/services/Context";
 import { useLoginMutation } from "@/services/otherApi/authApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const router = useRouter();
   const [login, { isLoading: loggingIn }] = useLoginMutation();
+
+  const { userId } = useContextElement();
+
+  useEffect(() => {
+    if (userId) {
+      router.push("/");
+    } else {
+    }
+  }, [userId, router]);
 
   const [viewPassword, setViewPassword] = React.useState(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,12 +34,10 @@ const LoginForm = () => {
       localStorage.setItem("id", result?.data?.data?.id);
       localStorage.setItem("token", result?.data?.data?.token);
       toast.success("You have logged in successfully");
-      router.push("/");
+      window.location.reload();
     } else {
       toast.error(result?.error?.data?.message);
     }
-
-   
   };
 
   return (

@@ -1,13 +1,22 @@
 "use client";
+import { useContextElement } from "@/services/Context";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const HeroButtons = () => {
   const router = useRouter();
-  const user = true;
+  const { userId } = useContextElement();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <></>;
+
   return (
-    <>
-      {user ? (
+    <div>
+      {userId ? (
         <div className="flex items-center justify-between mx-auto lg:w-3/5 w-full">
           <button
             onClick={() => router.push("/item/lost")}
@@ -30,7 +39,7 @@ const HeroButtons = () => {
           Get Started
         </button>
       )}
-    </>
+    </div>
   );
 };
 

@@ -2,17 +2,19 @@
 import React, { useState } from "react";
 import InputForImage from "../shared/InputForImage";
 import { toast } from "react-toastify";
-import CategoryModal from "./CategoryModal";
-import { useAddCategoryMutation } from "@/services/otherApi/categoriesApi";
+import AddCategorySelect from "./AddCategorySelect";
+import { useReportLostItemMutation } from "@/services/otherApi/itemApi";
 
 const LostItemForm = () => {
   const [category, setCategory] = useState(null);
   const [imgUrl, setImgUrl] = useState(null);
-  const categories: any[] = [];
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [report, { isLoading }] = useReportLostItemMutation();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const description = e.currentTarget.description.value;
-    const location = e.currentTarget.location.vale;
+    const location = e.currentTarget.location.value;
     const lostDate = e.currentTarget.date.value;
     const email = e.currentTarget.email.value;
     const phone = e.currentTarget.phone.value;
@@ -26,65 +28,32 @@ const LostItemForm = () => {
       email,
       phone,
       imgUrl,
-      category,
+      categoryId: category,
     };
-  };
+    const filteredData = Object.fromEntries(
+      Object.entries(collectedData).filter(
+        ([key, value]) => value !== null && value !== undefined && value !== ""
+      )
+    );
 
-  const [addCat, { isLoading: addingCat }] = useAddCategoryMutation();
+    const result = await report(filteredData);
+    console.log(result)
 
-  const [newCategory, setNewCategory] = useState("");
-  const handleAddCategory = async () => {
-    if (!newCategory) {
-      toast.warning("Please fill the field");
-    } else {
-      const result: any = await addCat({
-        name: newCategory,
-      });
-      if (result?.data?.success) {
-        toast.success(result?.data?.message);
-      } else {
-        toast.error(result?.error?.data?.error?.errorSource?.message);
-      }
+    if (result?.data?.success) {
+      toast.success(result?.data?.message);
     }
   };
 
   return (
     <>
-      <form className="h-auto xl:w-3/4 lg:w-3/5 md:w-4/5 w-11/12 bg-white shadow-sm rounded-md px-5 py-10 mt-20">
+      <form
+        onSubmit={handleSubmit}
+        className="h-auto xl:w-3/4 lg:w-3/5 md:w-4/5 w-11/12 bg-white shadow-sm rounded-md px-5 py-10 mt-20"
+      >
         <h2 className="py-5 px-3 text-2xl text-center">Add a lost item here</h2>
         <div className="w-11/12 grid lg:grid-cols-2 grid-cols-1 mx-auto gap-5">
-          <InputForImage></InputForImage>
-          <div className="w-full mx-auto mb-5">
-            <label className="block text-secondary text-sm font-bold mb-2">
-              Select a category
-            </label>
-            <select
-              onChange={(e: any) => setCategory(e.target.value)}
-              className="block w-full my-2 px-2 py-3 rounded-lg bg-gray-100 placeholder-gray-500 text-gray-900 outline-gray-300"
-            >
-              {categories.map((category: any) => (
-                <option key={category?.id}>{category?.name}</option>
-              ))}
-            </select>
-            <small>
-              Did not see the relevant category?{" "}
-              <button
-                onClick={() => {
-                  const modal = document.getElementById(
-                    "my_modal_1"
-                  ) as HTMLDialogElement | null;
-                  if (modal) {
-                    modal.showModal();
-                  } else {
-                    console.error("Modal element not found");
-                  }
-                }}
-                className="text-primary"
-              >
-                Add a new one
-              </button>{" "}
-            </small>
-          </div>
+          <AddCategorySelect setCategory={setCategory}></AddCategorySelect>
+          <InputForImage imgUrl={imgUrl} setImgUrl={setImgUrl}></InputForImage>
         </div>
         <div className="w-11/12 grid grid-cols-1 mx-auto gap-5">
           <div className="w-full mx-auto mb-5">
@@ -146,13 +115,16 @@ const LostItemForm = () => {
               name="email"
             />
           </div>
+          <div className="w-full mx-auto mb-5">
+            <button
+              disabled={isLoading}
+              className="block w-full my-2 px-2 py-3 rounded-lg btn btn-primary text-white"
+            >
+              Report
+            </button>
+          </div>
         </div>
       </form>
-      <CategoryModal
-        setNewCategory={setNewCategory}
-        handleAddCategory={handleAddCategory}
-        addingCat={addingCat}
-      ></CategoryModal>
     </>
   );
 };

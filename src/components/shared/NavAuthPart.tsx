@@ -1,18 +1,30 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { FiLogOut } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
+import { useContextElement } from "@/services/Context";
 
 const NavAuthPart = () => {
-  const user = false;
+  const { userId } = useContextElement();
+
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("id");
+    localStorage.removeItem("token");
+    window.location.reload();
   };
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <></>;
+
   return (
     <>
-      {!user ? (
+      {!userId ? (
         <Link href="/auth/login" className="btn btn-secondary">
           Sign In
         </Link>
