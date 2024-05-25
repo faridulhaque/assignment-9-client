@@ -3,10 +3,12 @@ import {
   useGetUserQuery,
   useUpdateProfileMutation,
 } from "@/services/otherApi/profileApi";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const ProfileEdit = () => {
+  const router = useRouter();
   const [edit, setEdit] = useState(false);
 
   const { data, isLoading } = useGetUserQuery("");
@@ -35,7 +37,7 @@ const ProfileEdit = () => {
     }
   };
 
-  if(isLoading) return <h2 className="text-center">Loading...</h2>
+  if (isLoading) return <h2 className="text-center">Loading...</h2>;
   return (
     <div className="w-11/12 mx-auto">
       {edit ? (
@@ -51,7 +53,7 @@ const ProfileEdit = () => {
               className="block w-full my-2 px-2 py-3 rounded-lg bg-gray-100 placeholder-gray-500 text-gray-900 outline-gray-300"
               type="username"
               placeholder="Enter your username"
-                defaultValue={profile?.username}
+              defaultValue={profile?.username}
               name="username"
             />
           </div>
@@ -79,14 +81,22 @@ const ProfileEdit = () => {
         </form>
       ) : (
         <>
-          <h2 className="text-2xl">Username: 
-          {profile?.username}</h2>
+          <h2 className="text-2xl">
+            Username:
+            {profile?.username}
+          </h2>
           <h2 className="text-2xl">Email: {profile?.email}</h2>
           <button
             onClick={() => setEdit(true)}
             className="my-5 btn btn-primary text-white"
           >
             Edit
+          </button>
+          <button
+            onClick={() => router.push("/profile/change_password")}
+            className="my-5 btn btn-primary text-white ml-5"
+          >
+            Change Password
           </button>
         </>
       )}
