@@ -39,8 +39,67 @@ const itemApi = apiSlice.injectEndpoints({
         };
       },
     }),
+
+    getFoundItem: builder.query({
+      query: (id) => {
+        const url = `/found-item/${id}`;
+        const method = "GET";
+
+        return {
+          url,
+          method,
+        };
+      },
+    }),
+
+    getLostItem: builder.query({
+      query: (id) => {
+        const url = `/lost-item/${id}`;
+        const method = "GET";
+
+        return {
+          url,
+          method,
+        };
+      },
+    }),
+
+    updateFoundItem: builder.mutation({
+      query: ({body, id}) => {
+        const url = `/found-item/update/${id}`;
+        const method = "PUT";
+
+        return {
+          url,
+          method,
+          body,
+        };
+      },
+      invalidatesTags: ["foundItems"],
+    }),
+    
+    updateLostItem: builder.mutation({
+      query: ({body, id}) => {
+        const url = `/lost-item/update/${id}`;
+        const method = "PUT";
+
+        return {
+          url,
+          method,
+          body,
+        };
+      },
+      invalidatesTags: ["lostItems"],
+    }),
+
   }),
 });
 
-export const { useReportLostItemMutation, useReportFoundItemMutation } =
-  itemApi;
+export const {
+  useGetFoundItemQuery,
+  useGetLostItemQuery,
+  useReportLostItemMutation,
+  useReportFoundItemMutation,
+  useUpdateFoundItemMutation,
+  useUpdateLostItemMutation
+} = itemApi;

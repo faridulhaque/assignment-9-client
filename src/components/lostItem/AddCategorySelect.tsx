@@ -7,7 +7,7 @@ import {
 } from "@/services/otherApi/categoriesApi";
 import { toast } from "react-toastify";
 
-const AddCategorySelect = ({ setCategory }: any) => {
+const AddCategorySelect = ({ setCategory, category, item }: any) => {
   const { data, isLoading } = useGetAllCatsQuery("");
 
   const categories = data?.data;
@@ -43,12 +43,15 @@ const AddCategorySelect = ({ setCategory }: any) => {
   return (
     <div className="w-full mx-auto mb-5">
       <label className="block text-secondary text-sm font-bold mb-2">
-        Select a category
+        Category
       </label>
       <select
         onChange={(e: any) => setCategory(e.target.value)}
         className="block w-full my-2 px-2 py-3 rounded-lg bg-gray-100 placeholder-gray-500 text-gray-900 outline-gray-300"
       >
+        <option value={category ? category : null}>
+          {category ? item?.category?.name : "Select a category"}
+        </option>
         {categories?.map((category: any) => (
           <option key={category?.id} value={category?.id}>
             {category?.name}

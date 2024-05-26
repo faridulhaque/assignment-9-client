@@ -52,7 +52,9 @@ const LostItemForm = () => {
       >
         <h2 className="py-5 px-3 text-2xl text-center">Add a lost item here</h2>
         <div className="w-11/12 grid lg:grid-cols-2 grid-cols-1 mx-auto gap-5">
-          <AddCategorySelect setCategory={setCategory}></AddCategorySelect>
+          <AddCategorySelect 
+          category={category}
+          setCategory={setCategory}></AddCategorySelect>
           <InputForImage imgUrl={imgUrl} setImgUrl={setImgUrl}></InputForImage>
         </div>
         <div className="w-11/12 grid grid-cols-1 mx-auto gap-5">

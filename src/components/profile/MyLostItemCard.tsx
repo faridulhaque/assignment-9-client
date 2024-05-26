@@ -1,4 +1,5 @@
 "use client";
+import { useUpdateLostItemMutation } from "@/services/otherApi/itemApi";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -6,7 +7,24 @@ import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 
 const MyLostItemCard = ({ item }: any) => {
+  const [updateLost, { isLoading: updatingLost }] = useUpdateLostItemMutation();
   const router = useRouter();
+
+  const handleDelete = async (id: string) => {
+    const body = {
+      isDeleted: true,
+    };
+    const data = {
+      body,
+      id,
+    };
+    const confirmed = confirm("Are you sure?");
+
+    if (confirmed) {
+      const result = await updateLost(data);
+    }
+  };
+
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 bg-white">
       {item.imgUrl ? (
@@ -34,7 +52,10 @@ const MyLostItemCard = ({ item }: any) => {
               }
               className="text-gray-600 cursor-pointer"
             />
-            <MdDeleteOutline className="text-gray-600 cursor-pointer" />
+            <MdDeleteOutline
+              onClick={() => handleDelete(item?.id)}
+              className="text-gray-600 cursor-pointer"
+            />
           </div>
         </div>
         <p className="text-gray-700 text-base">

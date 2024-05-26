@@ -40,7 +40,6 @@ const FoundItemForm = () => {
 
     const result = await report(filteredData);
 
-
     if (result?.data?.success) {
       toast.success(result?.data?.message);
     }
@@ -54,7 +53,10 @@ const FoundItemForm = () => {
         Report a found item here
       </h2>
       <div className="w-11/12 grid lg:grid-cols-2 grid-cols-1 mx-auto gap-5">
-        <AddCategorySelect setCategory={setCategory}></AddCategorySelect>
+        <AddCategorySelect
+          category={category}
+          setCategory={setCategory}
+        ></AddCategorySelect>
         <InputForImage imgUrl={imgUrl} setImgUrl={setImgUrl}></InputForImage>
       </div>
       <div className="w-11/12 grid grid-cols-1 mx-auto gap-5">
