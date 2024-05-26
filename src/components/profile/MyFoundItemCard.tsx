@@ -1,9 +1,12 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 
 const MyFoundItemCard = ({ item }: any) => {
+  const router = useRouter();
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 bg-white">
       {item.imgUrl ? (
@@ -25,7 +28,12 @@ const MyFoundItemCard = ({ item }: any) => {
             {item.category?.name || "Category not provided"}
           </div>
           <div className="flex space-x-2">
-            <FaEdit className="text-gray-600 cursor-pointer" />
+            <FaEdit
+              onClick={() =>
+                router.push(`/profile/update_item?type=found&id=${item?.id}`)
+              }
+              className="text-gray-600 cursor-pointer"
+            />
             <MdDeleteOutline className="text-gray-600 cursor-pointer" />
           </div>
         </div>

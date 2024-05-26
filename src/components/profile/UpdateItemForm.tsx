@@ -1,6 +1,8 @@
+"use client"
 import React from "react";
 
-const UpdateItemForm = () => {
+const UpdateItemForm = ({ lost, found, id }: any) => {
+  console.log(lost, found, id)
     const handleSubmit = () => {
 
     }
