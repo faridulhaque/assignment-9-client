@@ -10,7 +10,6 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("user");
   };
-  const user = true;
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -48,7 +47,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link href="/items/all">Items </Link>
+              <Link href="/item/all">Items </Link>
             </li>
           </ul>
         </div>
@@ -77,8 +76,9 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="/items/all">Items </Link>
+            <Link href="/item/all">Items </Link>
           </li>
+         
         </ul>
       </div>
       <div className="navbar-end">

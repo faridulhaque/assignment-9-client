@@ -6,7 +6,7 @@ const page = () => {
   return (
     <div className="h-screen bg-primary">
       <Navbar></Navbar>
-      <div className="w-full h-[calc(100vh-70px)]">
+      <div className="w-full h-min-screen">
         <MyFoundItemsContainer></MyFoundItemsContainer>
       </div>
     </div>

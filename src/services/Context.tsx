@@ -14,11 +14,17 @@ export const useContextElement = () => {
 
 const Context = ({ children }: any) => {
   let userId;
+  let isAdmin;
   try {
     userId =
       typeof window !== "undefined"
         ? // ? JSON.parse(localStorage.getItem("user") || "")
           localStorage.getItem("id") || ""
+        : null;
+    isAdmin =
+      typeof window !== "undefined"
+        ? // ? JSON.parse(localStorage.getItem("user") || "")
+          localStorage.getItem("isAdmin") || ""
         : null;
   } catch (error) {
     console.error("Error parsing user data from localStorage:", error);
@@ -26,6 +32,7 @@ const Context = ({ children }: any) => {
 
   const data = {
     userId,
+    isAdmin,
   };
 
   return (

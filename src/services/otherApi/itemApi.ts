@@ -28,9 +28,33 @@ const itemApi = apiSlice.injectEndpoints({
       },
     }),
 
+    claimItem: builder.mutation({
+      query: (body) => {
+        const url = `/item/claim`;
+        const method = "POST";
+
+        return {
+          url,
+          method,
+          body,
+        };
+      },
+    }),
+
     getRecentLostItem: builder.query({
       query: () => {
         const url = `/items/lost/recent`;
+        const method = "GET";
+
+        return {
+          url,
+          method,
+        };
+      },
+    }),
+    getFilteredItem: builder.query({
+      query: (query) => {
+        const url = `/items/filter?${query}`;
         const method = "GET";
 
         return {
@@ -65,7 +89,7 @@ const itemApi = apiSlice.injectEndpoints({
     }),
 
     updateFoundItem: builder.mutation({
-      query: ({body, id}) => {
+      query: ({ body, id }) => {
         const url = `/found-item/update/${id}`;
         const method = "PUT";
 
@@ -77,9 +101,9 @@ const itemApi = apiSlice.injectEndpoints({
       },
       invalidatesTags: ["foundItems"],
     }),
-    
+
     updateLostItem: builder.mutation({
-      query: ({body, id}) => {
+      query: ({ body, id }) => {
         const url = `/lost-item/update/${id}`;
         const method = "PUT";
 
@@ -91,7 +115,6 @@ const itemApi = apiSlice.injectEndpoints({
       },
       invalidatesTags: ["lostItems"],
     }),
-
   }),
 });
 
@@ -101,5 +124,7 @@ export const {
   useReportLostItemMutation,
   useReportFoundItemMutation,
   useUpdateFoundItemMutation,
-  useUpdateLostItemMutation
+  useUpdateLostItemMutation,
+  useGetFilteredItemQuery,
+  useClaimItemMutation
 } = itemApi;

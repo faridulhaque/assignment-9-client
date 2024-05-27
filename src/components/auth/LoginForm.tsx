@@ -31,7 +31,9 @@ const LoginForm = () => {
     });
 
     if (result?.data?.success) {
+
       localStorage.setItem("id", result?.data?.data?.id);
+      localStorage.setItem("isAdmin", result?.data?.data?.isAdmin);
       localStorage.setItem("token", result?.data?.data?.token);
       toast.success("You have logged in successfully");
       window.location.reload();

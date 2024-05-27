@@ -5,9 +5,10 @@ import Link from "next/link";
 import { FiLogOut } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 import { useContextElement } from "@/services/Context";
+import { MdDashboardCustomize } from "react-icons/md";
 
 const NavAuthPart = () => {
-  const { userId } = useContextElement();
+  const { userId, isAdmin } = useContextElement();
 
   const handleLogout = () => {
     localStorage.removeItem("id");
@@ -20,7 +21,9 @@ const NavAuthPart = () => {
     setMounted(true);
   }, []);
 
+
   if (!mounted) return <></>;
+
 
   return (
     <>
@@ -30,6 +33,11 @@ const NavAuthPart = () => {
         </Link>
       ) : (
         <div className="flex items-center">
+          {isAdmin === true && (
+            <Link href="/dashboard" className="mr-5">
+              <MdDashboardCustomize className="text-2xl" />
+            </Link>
+          )}
           <Link href="/profile" className="mr-5">
             <RxAvatar className="text-2xl" />
           </Link>
