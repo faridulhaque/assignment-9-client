@@ -1,7 +1,11 @@
+"use client";
 import React from "react";
 import LostItemCard from "./LostItemCard";
+import { useGetRecentLostItemQuery } from "@/services/otherApi/itemApi";
 
-const LostItems = ({ items }: any) => {
+const LostItems = () => {
+  const { data, isLoading } = useGetRecentLostItemQuery("");
+  const items = data?.data;
   return (
     <div className="bg-primary w-full">
       <div className=" py-10 mx-auto w-11/12 ">

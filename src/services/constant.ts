@@ -1,7 +1,7 @@
 import { TTestimonials } from "./types";
 
-// export const baseUrl = "https://assignment-9-server-ten.vercel.app/api"
-export const baseUrl = "http://localhost:5000/api"
+export const baseUrl = "https://assignment-9-server-ten.vercel.app/api"
+// export const baseUrl = "http://localhost:5000/api"
 
 export const testimonials: TTestimonials[] = [
   {

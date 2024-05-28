@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# How to run this project?
 
-## Getting Started
+* Run "npm install" 
+* Run "npm run dev"
 
-First, run the development server:
+# The project was built using the following technologies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* NextJs
+* TypeScript
+* Redux Toolkit
+* Tailwind CSS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Live Link
+* https://assignment-9-client-beryl.vercel.app/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This is the frontend for a website where users can search for their lost items. The goal is to create a helpful service where a user can upload any item they found, and those who have lost items can search for them.
 
-## Learn More
+The main features include:
 
-To learn more about Next.js, take a look at the following resources:
+* Users can upload details about an item they found.
+* Individuals who have lost their belongings can search for them here.
+* If they suspect that something on the website belongs to them, they can claim it.
+* There is a dashboard for admins to track claims and manage users.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Credentials
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Use 'admin@findify.com' as email and password to visit as admin.
+* Use 'user@findify.com' as email and password to visit as normal user.

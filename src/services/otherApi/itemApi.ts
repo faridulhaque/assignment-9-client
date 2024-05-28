@@ -126,5 +126,6 @@ export const {
   useUpdateFoundItemMutation,
   useUpdateLostItemMutation,
   useGetFilteredItemQuery,
-  useClaimItemMutation
+  useClaimItemMutation,
+  useGetRecentLostItemQuery
 } = itemApi;
