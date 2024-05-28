@@ -9,6 +9,11 @@ export type TTestimonialCardPage = {
   item: TTestimonials;
 };
 
+export interface ProtectedPageProps {
+  children: React.ReactNode;
+  userType: "user" | "admin";
+}
+
 export type TInputTypes = {
   label: string;
   name: string;
