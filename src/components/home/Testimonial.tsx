@@ -18,7 +18,7 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="lg:h-[550px]">
+    <div id="testimonial" className="lg:h-[550px] py-10">
       <h2 className="text-center text-4xl pb-5">Testimonial</h2>
 
       <div className="w-11/12 mx-auto flex items-center justify-center relative">

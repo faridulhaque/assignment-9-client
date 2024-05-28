@@ -7,7 +7,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const RegisterForm = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [register, { isLoading: registering }] = useRegisterMutation();
 
   const [viewPassword, setViewPassword] = React.useState(false);
@@ -45,9 +45,10 @@ const RegisterForm = () => {
       username,
       password,
     });
+
     if (result?.data?.success) {
       toast.success(result?.data?.message);
-      router.push('/auth/login')
+      router.push("/auth/login");
     } else {
       toast.error(result?.error?.data?.message);
     }

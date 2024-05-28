@@ -4,7 +4,7 @@ import about from "../../../public/img/about.jpg";
 
 const About = () => {
   return (
-    <div className="w-full py-20">
+    <div id="about" className="w-full py-20">
       <h2 className="text-center text-4xl">About Us</h2>
       <div className="container m-auto h-fit py-20 grid lg:grid-cols-2 mg:grid-cols-1 gap-10">
         <div className="w-full">

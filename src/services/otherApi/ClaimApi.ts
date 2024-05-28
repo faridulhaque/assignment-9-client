@@ -16,9 +16,22 @@ const claimApi = apiSlice.injectEndpoints({
       providesTags: ["claims"],
     }),
 
+    getClaimers: builder.query({
+      query: (id:string) => {
+        const url = `/claimers/${id}`;
+        const method = "GET";
+
+        return {
+          url,
+          method,
+        };
+      },
+      providesTags: ["claimers"],
+    }),
+
 
   }),
 });
 
-export const { useGetMyClaimsQuery } =
+export const { useGetMyClaimsQuery,  useGetClaimersQuery} =
   claimApi;

@@ -39,7 +39,7 @@ const ProfileEdit = () => {
 
   if (isLoading) return <h2 className="text-center">Loading...</h2>;
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto pt-10">
       {edit ? (
         <form
           onSubmit={handleSubmit}
@@ -82,10 +82,13 @@ const ProfileEdit = () => {
       ) : (
         <>
           <h2 className="text-2xl">
-            Username:
-            {profile?.username}
+            <span className="mr-3 font-bold">Username:</span>{" "}
+            <span>{profile?.username}</span>
           </h2>
-          <h2 className="text-2xl">Email: {profile?.email}</h2>
+          <h2 className="text-2xl">
+            <span className="mr-3 font-bold">Email:</span>{" "}
+            <span>{profile?.email}</span>
+          </h2>
           <button
             onClick={() => setEdit(true)}
             className="my-5 btn btn-primary text-white"

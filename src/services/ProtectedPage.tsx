@@ -1,8 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { ProtectedPageProps } from "./types";
 
-export const ProtectedPage = ({ children, userType }: any) => {
+export const ProtectedPage = ({ children, userType }: ProtectedPageProps) => {
   const router = useRouter();
 
   useEffect(() => {

@@ -30,8 +30,8 @@ const LostItemCard = ({ item }: any) => {
   };
 
   return (
-    <div className="h-80 w-full shadow-lg rounded-md relative">
-      <h2 className="text-center text-2xl py-3">{item?.category?.name}</h2>
+    <div className="h-60 w-full shadow-lg rounded-md relative bg-white">
+      <h2 className="text-center text-2xl pb-3 pt-5">{item?.category?.name}</h2>
       <p className="text-center px-2 pb-5">{item?.description}</p>
       <div className="w-full items-center justify-center flex absolute bottom-0 h-20">
         <button

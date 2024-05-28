@@ -61,6 +61,7 @@ const AddCategorySelect = ({ setCategory, category, item }: any) => {
       <small>
         Did not see the relevant category?{" "}
         <button
+          type="button"
           onClick={() => {
             openModal();
           }}

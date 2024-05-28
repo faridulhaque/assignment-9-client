@@ -4,7 +4,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="h-min-screen bg-primary pb-20">
+    <div className="min-h-screen bg-primary pb-20">
       <Navbar></Navbar>
       <div className="w-full h-min-screen">
         <AllItem></AllItem>

@@ -23,7 +23,7 @@ const CommonItem = ({ item }: any) => {
     }
   };
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 bg-white">
+    <div className="max-w-sm rounded overflow-hidden shadow-lg px-2 py-3 bg-white">
       {item.imgUrl ? (
         <Image
           width={200}
@@ -37,7 +37,7 @@ const CommonItem = ({ item }: any) => {
           Image not available
         </div>
       )}
-      <div className="px-6 py-4">
+      <div className="px-2 py-3">
         <div className="flex justify-between items-center mb-2">
           <div className="font-bold text-xl">
             {item.category?.name || "Category not provided"}
@@ -57,7 +57,7 @@ const CommonItem = ({ item }: any) => {
           {item.description || "Description not provided"}
         </p>
       </div>
-      <div className="px-6 py-4">
+      <div className="px-2 py-4">
         <p className="text-gray-600">
           <strong>Location:</strong> {item.location || "Not provided"}
         </p>

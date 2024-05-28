@@ -1,34 +1,39 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
 const defaultValue: any = {};
-const dataContext = React.createContext(defaultValue);
+const DataContext = React.createContext(defaultValue);
 
 export const useContextElement = () => {
-  return useContext(dataContext);
+  return useContext(DataContext);
 };
 
 const Context = ({ children }: any) => {
-  let userId;
-  let isAdmin;
-  try {
-    userId =
-      typeof window !== "undefined"
-        ? // ? JSON.parse(localStorage.getItem("user") || "")
-          localStorage.getItem("id") || ""
-        : null;
-    isAdmin =
-      typeof window !== "undefined"
-        ? // ? JSON.parse(localStorage.getItem("user") || "")
-          localStorage.getItem("isAdmin") || ""
-        : null;
-  } catch (error) {
-    console.error("Error parsing user data from localStorage:", error);
-  }
+  const [userId, setUserId] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined") {
+        const storedUserId = localStorage.getItem("id");
+        const storedIsAdmin = localStorage.getItem("isAdmin");
+
+        if (storedUserId) {
+          setUserId(storedUserId);
+        }
+
+        if (storedIsAdmin) {
+          setIsAdmin(storedIsAdmin === "true");
+        }
+      }
+    } catch (error) {
+      console.error("localStorage error:", error);
+    }
+  }, []);
 
   const data = {
     userId,
@@ -38,7 +43,7 @@ const Context = ({ children }: any) => {
   return (
     <Provider store={store}>
       <div>
-        <dataContext.Provider value={data}>{children}</dataContext.Provider>
+        <DataContext.Provider value={data}>{children}</DataContext.Provider>
         <ToastContainer
           position="bottom-center"
           autoClose={5000}

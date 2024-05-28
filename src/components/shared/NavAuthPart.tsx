@@ -21,9 +21,7 @@ const NavAuthPart = () => {
     setMounted(true);
   }, []);
 
-
   if (!mounted) return <></>;
-
 
   return (
     <>
@@ -33,11 +31,11 @@ const NavAuthPart = () => {
         </Link>
       ) : (
         <div className="flex items-center">
-          {isAdmin === true && (
+          {isAdmin === true ? (
             <Link href="/dashboard" className="mr-5">
               <MdDashboardCustomize className="text-2xl" />
             </Link>
-          )}
+          ) : null}
           <Link href="/profile" className="mr-5">
             <RxAvatar className="text-2xl" />
           </Link>
