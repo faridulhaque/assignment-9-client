@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import moment from "moment";
 
 const UpdateItemForm = ({ lost, found, id }: any) => {
+  const [isFound, setIsFound] = useState(false);
   const [category, setCategory] = useState(null);
   const [imgUrl, setImgUrl] = useState("");
 
@@ -31,12 +32,12 @@ const UpdateItemForm = ({ lost, found, id }: any) => {
 
   const [updateFound, { isLoading: updatingFound }] =
     useUpdateFoundItemMutation();
-  const [updateLost, { isLoading: updatingLost }] =
-    useUpdateLostItemMutation();
+  const [updateLost, { isLoading: updatingLost }] = useUpdateLostItemMutation();
 
   useEffect(() => {
     setImgUrl(item?.imgUrl);
     setCategory(item?.category?.id);
+    setIsFound(item?.isFound);
   }, [item]);
 
   if (foundItemLoading || lostItemLoading) {
@@ -81,6 +82,7 @@ const UpdateItemForm = ({ lost, found, id }: any) => {
         phone,
         imgUrl,
         categoryId: category,
+        isFound
       };
     }
 
@@ -102,7 +104,6 @@ const UpdateItemForm = ({ lost, found, id }: any) => {
       result = await updateLost(data);
     }
 
-    console.log(result);
 
     if (result?.data?.success) {
       toast.success(result?.data?.message);
@@ -191,6 +192,16 @@ const UpdateItemForm = ({ lost, found, id }: any) => {
             defaultValue={item?.email}
           />
         </div>
+        {lost && (
+          <div className="w-full mx-auto mb-5">
+            <input
+              onClick={() => setIsFound(!isFound)}
+              type="checkbox"
+              checked={isFound}
+              className="checkbox"
+            />
+          </div>
+        )}
         <div className="w-full mx-auto mb-5">
           <button
             disabled={updatingFound || updatingLost}

@@ -6,6 +6,7 @@ import { useGetRecentLostItemQuery } from "@/services/otherApi/itemApi";
 const LostItems = () => {
   const { data, isLoading } = useGetRecentLostItemQuery("");
   const items = data?.data;
+  if (isLoading) return <h2 className="text-center">Loading...</h2>;
   return (
     <div className="bg-primary w-full">
       <div className=" py-10 mx-auto w-11/12 ">

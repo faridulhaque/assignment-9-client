@@ -86,6 +86,7 @@ const itemApi = apiSlice.injectEndpoints({
           method,
         };
       },
+      providesTags: ["lostItems"],
     }),
 
     updateFoundItem: builder.mutation({
@@ -127,5 +128,5 @@ export const {
   useUpdateLostItemMutation,
   useGetFilteredItemQuery,
   useClaimItemMutation,
-  useGetRecentLostItemQuery
+  useGetRecentLostItemQuery,
 } = itemApi;
