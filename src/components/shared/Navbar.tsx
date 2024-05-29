@@ -39,11 +39,11 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link href="#about">About </Link>
+              <Link href="/#about">About </Link>
             </li>
 
             <li>
-              <Link href="#testimonial">Testimonial </Link>
+              <Link href="/#testimonial">Testimonial </Link>
             </li>
 
             <li>
@@ -68,21 +68,20 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="#about">About </Link>
+            <Link href="/#about">About </Link>
           </li>
 
           <li>
-            <Link href="#testimonial">Testimonial </Link>
+            <Link href="/#testimonial">Testimonial </Link>
           </li>
 
           <li>
             <Link href="/item/all">Items </Link>
           </li>
-         
         </ul>
       </div>
       <div className="navbar-end">
-       <NavAuthPart></NavAuthPart>
+        <NavAuthPart></NavAuthPart>
       </div>
     </div>
   );

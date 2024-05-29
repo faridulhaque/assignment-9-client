@@ -12,6 +12,7 @@ const NavAuthPart = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("id");
+    localStorage.removeItem("admin");
     localStorage.removeItem("token");
     window.location.reload();
   };
