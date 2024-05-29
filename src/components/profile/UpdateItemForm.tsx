@@ -193,12 +193,12 @@ const UpdateItemForm = ({ lost, found, id }: any) => {
           />
         </div>
         {lost && (
-          <div className="w-full mx-auto mb-5">
+          <div className="w-full mx-auto mb-5 flex items-center">
             <input
               onClick={() => setIsFound(!isFound)}
               type="checkbox"
               checked={isFound}
-              className="checkbox"
+              className="checkbox mr-5"
             />
             Mark as found item
           </div>
