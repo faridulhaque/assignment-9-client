@@ -200,6 +200,7 @@ const UpdateItemForm = ({ lost, found, id }: any) => {
               checked={isFound}
               className="checkbox"
             />
+            Mark as found item
           </div>
         )}
         <div className="w-full mx-auto mb-5">

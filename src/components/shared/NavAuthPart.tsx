@@ -6,15 +6,19 @@ import { FiLogOut } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 import { useContextElement } from "@/services/Context";
 import { MdDashboardCustomize } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 const NavAuthPart = () => {
   const { userId, isAdmin } = useContextElement();
+
+  const router = useRouter();
 
   const handleLogout = () => {
     localStorage.removeItem("id");
     localStorage.removeItem("admin");
     localStorage.removeItem("token");
     window.location.reload();
+    router.push("/")
   };
 
   const [mounted, setMounted] = useState(false);

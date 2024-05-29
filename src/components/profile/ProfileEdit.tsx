@@ -38,6 +38,7 @@ const ProfileEdit = () => {
   };
 
   if (isLoading) return <h2 className="text-center">Loading...</h2>;
+  
   return (
     <div className="w-11/12 mx-auto pt-10">
       {edit ? (
